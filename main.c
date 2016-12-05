@@ -237,6 +237,9 @@ void writeArrayIntoMatrix(double* chunk, double** matrix, int offset, int chuckS
 
 int main(int argc, char **argv)
 {
+  double starttime, endtime;
+  starttime = MPI_Wtime();
+
   if(argc <= 2) {
       printf("No Arguments");
       exit(1);
@@ -304,5 +307,9 @@ int main(int argc, char **argv)
   }
 
   MPI_Finalize();
+
+  endtime   = MPI_Wtime();
+  printf("That took %f seconds\n",endtime-starttime);
+
   return 0;
 }
