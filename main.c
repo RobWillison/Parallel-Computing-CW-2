@@ -300,7 +300,7 @@ int main(int argc, char **argv)
       writeArrayIntoMatrix(array, writeMatrix, offset, chunkSize[i], size);
       offset = offset + chunkSize[i];
     }
-    printArray(writeMatrix);
+    //printArray(writeMatrix);
   } else {
     double* array = flatternMatrixChunk(writeMatrix, size, offset, chunkSize[rank]);
     MPI_Send(array, chunkSize[rank] * size, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
@@ -309,7 +309,7 @@ int main(int argc, char **argv)
   MPI_Finalize();
 
   endtime   = MPI_Wtime();
-  printf("That took %f seconds\n",endtime-starttime);
+  printf("That took %f - %f\n",endtime, starttime);
 
   return 0;
 }
