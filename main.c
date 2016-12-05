@@ -237,6 +237,13 @@ void writeArrayIntoMatrix(double* chunk, double** matrix, int offset, int chuckS
 
 int main(int argc, char **argv)
 {
+  if(argc <= 2) {
+      printf("No Arguments");
+      exit(1);
+  }
+  size = atoi(argv[1]);
+  numberOfNodes = atoi(argv[2]);
+
   int rank;
   int rc = MPI_Init(NULL, NULL);
   if (rc != MPI_SUCCESS) {
