@@ -135,6 +135,7 @@ int* getChunckSize(int matrixSize, int numberOfNodes)
     }
     //printf("%d\n", chunkSize[i]);
   }
+
   return chunkSize;
 }
 
@@ -254,6 +255,12 @@ int main(int argc, char **argv)
   }
   size = atoi(argv[1]);
   numberOfNodes = atoi(argv[2]);
+
+  double** readMatrix = getMatrix(size, size);
+  double** writeMatrix = getMatrix(size, size);
+
+  setupMatrix(readMatrix, writeMatrix);
+
   printf("Running Size %d on %d\n", size, numberOfNodes);
   int rank;
   int rc = MPI_Init(NULL, NULL);
@@ -263,17 +270,14 @@ int main(int argc, char **argv)
     printf ("Error\n");
     MPI_Abort(MPI_COMM_WORLD, rc);
   }
-  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-  double** readMatrix = getMatrix(size, size);
-  double** writeMatrix = getMatrix(size, size);
-  setupMatrix(readMatrix, writeMatrix);
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   int* chunkSize = getChunckSize(size,numberOfNodes);
 
   int offset = 1;
   int i;
-  for (i = 0; i < rank - 1; i++)
+  for (i = 0; i < rank; i++)
   {
     offset = offset + chunkSize[i];
   }
