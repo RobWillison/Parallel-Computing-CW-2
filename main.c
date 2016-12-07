@@ -93,7 +93,7 @@ int relaxRow(int row, double** readMatrix, double** writeMatrix, double precisio
 **/
 void setupMatrix(double** readMatrix, double** writeMatrix)
 {
-  double boundingValues = 1;
+  double boundingValues = 10;
   int x;
   //fill sides
   for (x = 0; x < size; x++)
@@ -135,6 +135,7 @@ int* getChunckSize(int matrixSize, int numberOfNodes)
 
 int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int offset, double precision, int rank, int size)
 {
+  MPI_Request request, recieve;
   int cont = 0;
   //relax two outside rows, the ones required by other processes
   if(relaxRow(offset, readMatrix, writeMatrix, precision)) cont = 1;
@@ -142,25 +143,28 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
   if (offset > 1)
   {
     int target = rank - 1;
-    MPI_Send(
+    MPI_Isend(
       writeMatrix[offset],
       size,
       MPI_DOUBLE,
       target,
       offset,
-      MPI_COMM_WORLD
+      MPI_COMM_WORLD,
+      &request
     );
   }
+
   if (offset + (chunkSize - 1) < size - 2)
   {
     int target = rank + 1;
-    MPI_Send(
+    MPI_Isend(
       writeMatrix[offset + (chunkSize - 1)],
       size,
       MPI_DOUBLE,
       target,
       offset + (chunkSize - 1),
-      MPI_COMM_WORLD
+      MPI_COMM_WORLD,
+      &request
     );
   }
 
@@ -174,28 +178,28 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
   {
     MPI_Status stat;
     int target = rank - 1;
-    MPI_Recv(
+    MPI_Irecv(
       writeMatrix[offset - 1],
       size,
       MPI_DOUBLE,
       target,
       offset - 1,
       MPI_COMM_WORLD,
-      &stat
+      &recieve
     );
   }
   if (offset + (chunkSize - 1) < size - 2)
   {
     MPI_Status stat;
     int target = rank + 1;
-    MPI_Recv(
+    MPI_Irecv(
       writeMatrix[offset + (chunkSize - 1) + 1],
       size,
       MPI_DOUBLE,
       target,
       offset + (chunkSize - 1) + 1,
       MPI_COMM_WORLD,
-      &stat
+      &recieve
     );
   }
 
@@ -238,7 +242,6 @@ void writeArrayIntoMatrix(double* chunk, double** matrix, int offset, int chuckS
 int main(int argc, char **argv)
 {
   double starttime, endtime;
-  starttime = MPI_Wtime();
 
   if(argc <= 2) {
       printf("No Arguments");
@@ -246,9 +249,11 @@ int main(int argc, char **argv)
   }
   size = atoi(argv[1]);
   numberOfNodes = atoi(argv[2]);
-
+  printf("Running Size %d on %d\n", size, numberOfNodes);
   int rank;
   int rc = MPI_Init(NULL, NULL);
+
+  starttime = MPI_Wtime();
   if (rc != MPI_SUCCESS) {
     printf ("Error\n");
     MPI_Abort(MPI_COMM_WORLD, rc);
@@ -271,11 +276,14 @@ int main(int argc, char **argv)
   int cont = 1;
   while (cont)
   {
+
     cont = relaxChunk(readMatrix, writeMatrix, chunkSize[rank], offset, precision, rank, size);
     int rec = 0;
+    printf("Cont %d\n", cont);
     MPI_Reduce(&cont, &rec, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
     cont = rec;
     MPI_Bcast(&cont, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
     double** temp = readMatrix;
     readMatrix = writeMatrix;
     writeMatrix = temp;
@@ -300,7 +308,7 @@ int main(int argc, char **argv)
       writeArrayIntoMatrix(array, writeMatrix, offset, chunkSize[i], size);
       offset = offset + chunkSize[i];
     }
-    //printArray(writeMatrix);
+    printArray(writeMatrix);
   } else {
     double* array = flatternMatrixChunk(writeMatrix, size, offset, chunkSize[rank]);
     MPI_Send(array, chunkSize[rank] * size, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
@@ -309,7 +317,7 @@ int main(int argc, char **argv)
   MPI_Finalize();
 
   endtime   = MPI_Wtime();
-  printf("That took %f - %f\n",endtime, starttime);
+  printf("That took %f\n",endtime - starttime);
 
   return 0;
 }
