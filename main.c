@@ -118,17 +118,22 @@ int* getChunckSize(int matrixSize, int numberOfNodes)
   matrixSize = matrixSize - 2; //remove the two edges which are fixed
   int* chunkSize = (int*)malloc(sizeof(int) * numberOfNodes);
   int roundHigh = ceil((float) matrixSize / (float) numberOfNodes);
+  int rowsLeft = matrixSize;
 
   int i;
   for (i = 0; i < numberOfNodes; i++)
   {
-    matrixSize = matrixSize - roundHigh;
-    if (matrixSize > 0)
+    if (rowsLeft - roundHigh > 0)
     {
       chunkSize[i] = roundHigh;
+      rowsLeft = rowsLeft - roundHigh;
+    } else if (rowsLeft > 0){
+      chunkSize[i] = rowsLeft;
+      rowsLeft = 0;
     } else {
-      chunkSize[i] = roundHigh + matrixSize;
+      chunkSize[i] = 0;
     }
+    //printf("%d\n", chunkSize[i]);
   }
   return chunkSize;
 }
@@ -268,7 +273,7 @@ int main(int argc, char **argv)
 
   int offset = 1;
   int i;
-  for (i = 0; i < rank; i++)
+  for (i = 0; i < rank - 1; i++)
   {
     offset = offset + chunkSize[i];
   }
@@ -276,10 +281,12 @@ int main(int argc, char **argv)
   int cont = 1;
   while (cont)
   {
-
-    cont = relaxChunk(readMatrix, writeMatrix, chunkSize[rank], offset, precision, rank, size);
+    if (chunkSize[rank] != 0){
+      cont = relaxChunk(readMatrix, writeMatrix, chunkSize[rank], offset, precision, rank, size);
+    } else {
+      cont = 0;
+    }
     int rec = 0;
-    printf("Cont %d\n", cont);
     MPI_Reduce(&cont, &rec, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
     cont = rec;
     MPI_Bcast(&cont, 1, MPI_INT, 0, MPI_COMM_WORLD);
@@ -292,10 +299,12 @@ int main(int argc, char **argv)
   if (rank == 0){
     int i;
     int offset = chunkSize[0] + 1;
+
     for(i = 1; i < numberOfNodes; i++)
     {
       MPI_Status stat;
       double* array = (double*)malloc(sizeof(double) * chunkSize[i] * size);
+
       MPI_Recv(
         array,
         chunkSize[i] * size,
@@ -305,10 +314,11 @@ int main(int argc, char **argv)
         MPI_COMM_WORLD,
         &stat
       );
+      if (rank == 0) printf("%d\n", offset);
       writeArrayIntoMatrix(array, writeMatrix, offset, chunkSize[i], size);
       offset = offset + chunkSize[i];
     }
-    printArray(writeMatrix);
+    //printArray(writeMatrix);
   } else {
     double* array = flatternMatrixChunk(writeMatrix, size, offset, chunkSize[rank]);
     MPI_Send(array, chunkSize[rank] * size, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
