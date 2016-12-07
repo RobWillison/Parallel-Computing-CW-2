@@ -1,0 +1,108 @@
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+Running Size 3000 on 32
+95
+189
+283
+377
+471
+565
+659
+753
+847
+941
+1035
+1129
+1223
+1317
+1411
+1505
+1599
+1693
+1787
+1881
+1975
+2069
+2163
+2257
+2351
+2445
+2539
+2633
+2727
+2821
+2915
+That took 2.686068
+That took 2.686079
+That took 2.686077
+That took 2.686072
+That took 2.686027
+That took 2.686083
+That took 2.686005
+That took 2.686807
+That took 2.686872
+That took 2.686877
+That took 2.687702
+That took 2.688907
+That took 2.689983
+That took 2.690674
+That took 2.690780
+That took 2.690775
+That took 2.690780
+That took 2.690798
+That took 2.690750
+That took 2.690712
+That took 2.690795
+That took 2.690732
+That took 2.690730
+That took 2.692393
+That took 2.694125
+That took 2.717008
+That took 2.715554
+That took 3.706324
+That took 3.707347
+That took 3.710790
+That took 3.710783
+That took 3.711323
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 467009
+No. of nodes   : 2
+No. of CPUs    : 32
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:07
+Nodelist       : node-sw-[163-164]
+
+########################################################################
+

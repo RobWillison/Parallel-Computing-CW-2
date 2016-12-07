@@ -1,0 +1,108 @@
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+Running Size 9000 on 32
+283
+565
+847
+1129
+1411
+1693
+1975
+2257
+2539
+2821
+3103
+3385
+3667
+3949
+4231
+4513
+4795
+5077
+5359
+5641
+5923
+6205
+6487
+6769
+7051
+7333
+7615
+7897
+8179
+8461
+8743
+That took 14.333809
+That took 14.333759
+That took 14.334644
+That took 14.335716
+That took 14.335784
+That took 14.336695
+That took 14.335807
+That took 14.336677
+That took 14.336642
+That took 14.338615
+That took 14.337751
+That took 14.342195
+That took 14.346320
+That took 14.490791
+That took 14.490759
+That took 14.488937
+That took 14.489728
+That took 14.495701
+That took 15.348694
+That took 15.348588
+That took 15.348486
+That took 15.348427
+That took 15.348545
+That took 15.348607
+That took 15.348709
+That took 15.348533
+That took 15.348772
+That took 15.348547
+That took 15.348502
+That took 15.348633
+That took 15.349605
+That took 15.349812
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 467000
+No. of nodes   : 2
+No. of CPUs    : 32
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:19
+Nodelist       : node-sw-[161-162]
+
+########################################################################
+

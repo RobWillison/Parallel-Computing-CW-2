@@ -1,0 +1,60 @@
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+Running Size 9000 on 16
+564
+1127
+1690
+2253
+2816
+3379
+3942
+4505
+5068
+5631
+6194
+6757
+7320
+7883
+8446
+That took 25.542528
+That took 25.542490
+That took 25.542488
+That took 25.542543
+That took 25.542463
+That took 25.542369
+That took 25.542462
+That took 25.542430
+That took 25.542510
+That took 25.542450
+That took 25.542497
+That took 25.542516
+That took 25.542553
+That took 25.542593
+That took 25.544938
+That took 25.545093
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 466998
+No. of nodes   : 1
+No. of CPUs    : 16
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:29
+Nodelist       : node-sw-162
+
+########################################################################
+

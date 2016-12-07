@@ -1,0 +1,204 @@
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+Running Size 4000 on 64
+64
+127
+190
+253
+316
+379
+442
+505
+568
+631
+694
+757
+820
+883
+946
+1009
+1072
+1135
+1198
+1261
+1324
+1387
+1450
+1513
+1576
+1639
+1702
+1765
+1828
+1891
+1954
+2017
+2080
+2143
+2206
+2269
+2332
+2395
+2458
+2521
+2584
+2647
+2710
+2773
+2836
+2899
+2962
+3025
+3088
+3151
+3214
+3277
+3340
+3403
+3466
+3529
+3592
+3655
+3718
+3781
+3844
+3907
+3970
+That took 2.551137
+That took 2.553004
+That took 2.553046
+That took 2.553020
+That took 2.551593
+That took 2.551593
+That took 2.551508
+That took 2.553950
+That took 2.553918
+That took 2.555871
+That took 2.555004
+That took 2.554364
+That took 2.572568
+That took 2.578231
+That took 2.579114
+That took 2.578970
+That took 2.579097
+That took 2.581057
+That took 2.581031
+That took 2.595982
+That took 2.774702
+That took 2.774590
+That took 2.774706
+That took 2.774620
+That took 2.774627
+That took 2.775373
+That took 2.774718
+That took 2.779220
+That took 2.792321
+That took 2.791404
+That took 2.820039
+That took 2.844953
+That took 2.845337
+That took 2.845009
+That took 2.881126
+That took 2.882024
+That took 2.882108
+That took 2.882226
+That took 2.929081
+That took 2.995471
+That took 3.571363
+That took 3.571484
+That took 3.573059
+That took 3.573124
+That took 3.573142
+That took 3.573155
+That took 3.574074
+That took 3.573944
+That took 3.575354
+That took 3.575523
+That took 3.575426
+That took 3.576361
+That took 3.575456
+That took 3.578958
+That took 3.575692
+That took 3.575663
+That took 3.575771
+That took 3.575703
+That took 3.575730
+That took 3.575745
+That took 3.575662
+That took 3.575716
+That took 3.575783
+That took 3.584577
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 467013
+No. of nodes   : 4
+No. of CPUs    : 64
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:06
+Nodelist       : node-sw-[161-164]
+
+########################################################################
+

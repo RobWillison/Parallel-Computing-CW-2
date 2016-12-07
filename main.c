@@ -318,7 +318,6 @@ int main(int argc, char **argv)
         MPI_COMM_WORLD,
         &stat
       );
-      if (rank == 0) printf("%d\n", offset);
       writeArrayIntoMatrix(array, writeMatrix, offset, chunkSize[i], size);
       offset = offset + chunkSize[i];
     }

@@ -1,0 +1,36 @@
+Running Size 3000 on 8
+Running Size 3000 on 8
+Running Size 3000 on 8
+Running Size 3000 on 8
+Running Size 3000 on 8
+Running Size 3000 on 8
+Running Size 3000 on 8
+Running Size 3000 on 8
+376
+751
+1126
+1501
+1876
+2251
+2626
+That took 5.616094
+That took 5.620144
+That took 5.620129
+That took 5.620020
+That took 5.620146
+That took 5.619977
+That took 5.620134
+That took 5.629006
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 466983
+No. of nodes   : 1
+No. of CPUs    : 16
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:09
+Nodelist       : node-sw-162
+
+########################################################################
+

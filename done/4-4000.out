@@ -1,0 +1,24 @@
+Running Size 4000 on 4
+Running Size 4000 on 4
+Running Size 4000 on 4
+Running Size 4000 on 4
+1001
+2001
+3001
+That took 19.501396
+That took 19.501375
+That took 19.501371
+That took 19.501379
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 466972
+No. of nodes   : 1
+No. of CPUs    : 16
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:21
+Nodelist       : node-sw-163
+
+########################################################################
+

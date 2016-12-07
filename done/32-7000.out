@@ -1,0 +1,108 @@
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+Running Size 7000 on 32
+220
+439
+658
+877
+1096
+1315
+1534
+1753
+1972
+2191
+2410
+2629
+2848
+3067
+3286
+3505
+3724
+3943
+4162
+4381
+4600
+4819
+5038
+5257
+5476
+5695
+5914
+6133
+6352
+6571
+6790
+That took 9.202723
+That took 9.203578
+That took 9.203667
+That took 9.202358
+That took 9.203328
+That took 9.204739
+That took 9.205616
+That took 9.204707
+That took 9.204623
+That took 9.204754
+That took 9.204753
+That took 9.204736
+That took 9.204422
+That took 9.204425
+That took 9.204409
+That took 9.204366
+That took 9.204316
+That took 9.204397
+That took 9.204465
+That took 9.204438
+That took 9.207623
+That took 9.206716
+That took 9.207755
+That took 9.206370
+That took 9.208262
+That took 9.373818
+That took 9.547081
+That took 10.223371
+That took 10.224261
+That took 10.224392
+That took 10.224364
+That took 10.228604
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 467005
+No. of nodes   : 2
+No. of CPUs    : 32
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:12
+Nodelist       : node-sw-[161-162]
+
+########################################################################
+
