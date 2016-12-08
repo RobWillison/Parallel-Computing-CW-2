@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# set the number of nodes
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=2
+# set name of job
+#SBATCH --job-name=CW_2_Test
+#SBATCH --account=cm30225
+#SBATCH --partition=teaching
+#SBATCH --output=2-1000.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=rjw57@bath.ac.uk
+module load openmpi
+mpirun -np $SLURM_NTASKS ./parallel 1000 $SLURM_NTASKS

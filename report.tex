@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{float}
+
+\usepackage{listings}
+\begin{document}
+
+\title{CM30225 Parallel Computing \\ Assessed Courseork Assignment 1}
+\author{}
+
+\maketitle
+
+\section{Approach}
+
+
+
+\section{Parralisation Technique}
+
+\section{Avoiding Race Conditions}
+
+\section{Scalability Investigation}
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Nodes},
+     ylabel=Time,
+     ]
+   \addplot table [x=nodes,y=time] {data/TimeThread10000};
+ \end{axis}
+ \end{tikzpicture}
+ \caption{}
+ \label{fig:speedup}
+ \end{figure}\\~\\
+
+\end{document}
