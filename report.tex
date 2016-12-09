@@ -38,6 +38,20 @@
  \end{tikzpicture}
  \caption{}
  \label{fig:speedup}
- \end{figure}\\~\\
+ \end{figure}
+
+ \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \begin{axis}[
+      xlabel={Nodes},
+      ylabel=Time,
+      ]
+    \addplot table [x=nodes,y=time] {data/TimeThread10000};
+  \end{axis}
+  \end{tikzpicture}
+  \caption{}
+  \label{fig:speedup}
+  \end{figure}
 
 \end{document}

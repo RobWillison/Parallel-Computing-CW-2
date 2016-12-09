@@ -1,0 +1,156 @@
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+Running Size 10000 on 48
+210
+419
+628
+837
+1046
+1255
+1464
+1673
+1882
+2091
+2300
+2509
+2718
+2927
+3136
+3345
+3554
+3763
+3972
+4181
+4390
+4599
+4808
+5017
+5226
+5435
+5644
+5853
+6062
+6271
+6480
+6689
+6898
+7107
+7316
+7525
+7734
+7943
+8152
+8361
+8570
+8779
+8988
+9197
+9406
+9615
+9824
+That took 12.101840
+That took 12.101882
+That took 12.101827
+That took 12.101841
+That took 12.101827
+That took 12.103465
+That took 12.103600
+That took 12.102930
+That took 12.105110
+That took 12.105698
+That took 12.105108
+That took 12.105073
+That took 12.106398
+That took 12.104802
+That took 12.104801
+That took 12.104803
+That took 12.104804
+That took 12.104761
+That took 12.104782
+That took 12.106683
+That took 12.106699
+That took 12.108776
+That took 12.109729
+That took 12.108702
+That took 12.109961
+That took 12.109359
+That took 12.109347
+That took 12.109344
+That took 12.109322
+That took 12.109274
+That took 12.109362
+That took 12.111410
+That took 12.180000
+That took 12.180000
+That took 12.245075
+That took 12.245042
+That took 12.245102
+That took 12.247934
+That took 13.106902
+That took 13.105710
+That took 13.106436
+That took 13.106708
+That took 13.106697
+That took 13.109678
+That took 13.110447
+That took 13.111440
+That took 13.111444
+That took 13.127558
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 475497
+No. of nodes   : 4
+No. of CPUs    : 64
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:15
+Nodelist       : node-sw-[098,103,112-113]
+
+########################################################################
+

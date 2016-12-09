@@ -1,0 +1,156 @@
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+Running Size 4000 on 48
+85
+169
+253
+337
+421
+505
+589
+673
+757
+841
+925
+1009
+1093
+1177
+1261
+1345
+1429
+1513
+1597
+1681
+1765
+1849
+1933
+2017
+2101
+2185
+2269
+2353
+2437
+2521
+2605
+2689
+2773
+2857
+2941
+3025
+3109
+3193
+3277
+3361
+3445
+3529
+3613
+3697
+3781
+3865
+3949
+That took 2.887021
+That took 2.891101
+That took 2.891164
+That took 2.890874
+That took 2.891102
+That took 2.890900
+That took 2.891096
+That took 2.890935
+That took 2.891152
+That took 2.892231
+That took 2.895386
+That took 2.895857
+That took 2.895871
+That took 2.895891
+That took 2.896579
+That took 2.896097
+That took 2.896084
+That took 2.896096
+That took 2.896124
+That took 2.899438
+That took 2.899638
+That took 2.899388
+That took 2.899666
+That took 2.899462
+That took 2.899405
+That took 2.899429
+That took 2.899953
+That took 2.899963
+That took 2.899985
+That took 2.899969
+That took 2.908032
+That took 2.915391
+That took 2.921100
+That took 3.897919
+That took 3.896754
+That took 3.896884
+That took 3.897421
+That took 3.897392
+That took 3.897421
+That took 3.897406
+That took 3.898292
+That took 3.897653
+That took 3.897662
+That took 3.900868
+That took 3.901877
+That took 3.901738
+That took 3.901700
+That took 3.901636
+
+########################################################################
+----------------------! Balena Job Details !----------------------------
+
+JobID          : 475473
+No. of nodes   : 4
+No. of CPUs    : 64
+Timelimit      : 00:10:00
+Elapsed time   : 00:00:07
+Nodelist       : node-sw-[161-164]
+
+########################################################################
+
