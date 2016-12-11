@@ -113,6 +113,12 @@ void setupMatrix(double** readMatrix, double** writeMatrix)
   }
 }
 
+/**
+* getChunckSize
+* Works out how many rows to give each node
+* returns an array of the same length as there are nodes,
+* each item is the number of rows to give that node
+**/
 int* getChunckSize(int matrixSize, int numberOfNodes)
 {
   matrixSize = matrixSize - 2; //remove the two edges which are fixed
@@ -138,7 +144,13 @@ int* getChunckSize(int matrixSize, int numberOfNodes)
 
   return chunkSize;
 }
-
+/**
+* relaxChunk
+* This section performs one relaxation iteration on the chunkSize rows from the
+* offset in the matrix. it also sends the two outside rows to the other nodes
+* which will require them for the next cycle, and also recives the outer most rows
+* from those neighbor nodes as they will be needed in the next iteration
+**/
 int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int offset, double precision, int rank, int size)
 {
   MPI_Request request, recieve;
@@ -146,6 +158,7 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
   //relax two outside rows, the ones required by other processes
   if(relaxRow(offset, readMatrix, writeMatrix, precision)) cont = 1;
   if(relaxRow(offset + (chunkSize - 1), readMatrix, writeMatrix, precision)) cont = 1;
+  //If this isnt the first chunk send the leftmost row to the node doing the chunck to the left
   if (offset > 1)
   {
     int target = rank - 1;
@@ -159,7 +172,7 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
       &request
     );
   }
-
+  //If this isnt the last chunk send the rightmost row to the node doing the chunck to the right
   if (offset + (chunkSize - 1) < size - 2)
   {
     int target = rank + 1;
@@ -173,13 +186,13 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
       &request
     );
   }
-
+  //Relax the rest of the rows
   int i;
   for (i = offset + 1; i < offset + (chunkSize - 1); i++)
   {
     if(relaxRow(i, readMatrix, writeMatrix, precision)) cont = 1;
   }
-
+  //If this isnt the first chunk recieve the rightmost row from the node to the left
   if (offset > 1)
   {
     MPI_Status stat;
@@ -194,6 +207,7 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
       &recieve
     );
   }
+  //If this isnt the last chunk recieve the leftmost row from the node to the right
   if (offset + (chunkSize - 1) < size - 2)
   {
     MPI_Status stat;
@@ -212,7 +226,10 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
 
   return cont;
 }
-
+/**
+* flatternMatrixChunk
+* Convert a matrix into a 1D array for sending to another node
+**/
 double* flatternMatrixChunk(double** matrix, int size, int offset, int chuckSize)
 {
   double* array = (double*)malloc(sizeof(double) * chuckSize * size);
@@ -229,7 +246,10 @@ double* flatternMatrixChunk(double** matrix, int size, int offset, int chuckSize
   }
   return array;
 }
-
+/**
+* writeArrayIntoMatrix
+* write a 1D array into the matrix, oposite of flatternMatrixChunk
+*/
 void writeArrayIntoMatrix(double* chunk, double** matrix, int offset, int chuckSize, int size)
 {
   int i;
@@ -262,53 +282,62 @@ int main(int argc, char **argv)
   setupMatrix(readMatrix, writeMatrix);
 
   printf("Running Size %d on %d\n", size, numberOfNodes);
+
   int rank;
   int rc = MPI_Init(NULL, NULL);
-
+  //Record start time
   starttime = MPI_Wtime();
+  //Check for error
   if (rc != MPI_SUCCESS) {
     printf ("Error\n");
     MPI_Abort(MPI_COMM_WORLD, rc);
   }
-
+  //Get rank
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
+  //Get the chunk sizes
   int* chunkSize = getChunckSize(size,numberOfNodes);
-
+  //Work out what the chunk size and offset are for this node
   int offset = 1;
   int i;
   for (i = 0; i < rank; i++)
   {
     offset = offset + chunkSize[i];
   }
-
+  //Which every process hasen't finished
   int cont = 1;
   while (cont)
   {
+    //If I have a chunk size of more than 0, run one relaxation iteration
     if (chunkSize[rank] != 0){
       cont = relaxChunk(readMatrix, writeMatrix, chunkSize[rank], offset, precision, rank, size);
     } else {
       cont = 0;
     }
-    int rec = 0;
-    MPI_Reduce(&cont, &rec, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-    cont = rec;
+
+    int addedCont = 0;
+    //Let the processor with rank 0 reduce all the cont variables by addition
+    MPI_Reduce(&cont, &addedCont, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+    cont = addedCont;
+    //Broadcast the result of the reduce to all nodes and recive in cont
     MPI_Bcast(&cont, 1, MPI_INT, 0, MPI_COMM_WORLD);
-
-    double** temp = readMatrix;
-    readMatrix = writeMatrix;
-    writeMatrix = temp;
+    //Swap the matrixs round if the cont value is non zero
+    if (cont) {
+      double** temp = readMatrix;
+      readMatrix = writeMatrix;
+      writeMatrix = temp;
+    }
   }
-
+  //Once relaxation has reached the precision
+  //Let the processor of rank 0 recieve all relaxed chunks and build the matrix
   if (rank == 0){
     int i;
     int offset = chunkSize[0] + 1;
-
+    //For each node
     for(i = 1; i < numberOfNodes; i++)
     {
       MPI_Status stat;
       double* array = (double*)malloc(sizeof(double) * chunkSize[i] * size);
-
+      //recieve the matrix chunk from that node
       MPI_Recv(
         array,
         chunkSize[i] * size,
@@ -318,17 +347,19 @@ int main(int argc, char **argv)
         MPI_COMM_WORLD,
         &stat
       );
+      //Insert that chunk into this nodes writeMatrix
       writeArrayIntoMatrix(array, writeMatrix, offset, chunkSize[i], size);
       offset = offset + chunkSize[i];
     }
-    //printArray(writeMatrix);
+    printArray(writeMatrix);
   } else {
+    //If this node hasen't got a rank of 0 send its chunk to the node of rank 0
     double* array = flatternMatrixChunk(writeMatrix, size, offset, chunkSize[rank]);
     MPI_Send(array, chunkSize[rank] * size, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
   }
-
+  //Finish everything
   MPI_Finalize();
-
+  //Get the run time
   endtime   = MPI_Wtime();
   printf("That took %f\n",endtime - starttime);
 
