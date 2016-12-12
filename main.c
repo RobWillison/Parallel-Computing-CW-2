@@ -268,6 +268,12 @@ void writeArrayIntoMatrix(double* chunk, double** matrix, int offset, int chuckS
 int main(int argc, char **argv)
 {
   double starttime, endtime;
+  int rank;
+  int rc = MPI_Init(NULL, NULL);
+  //Record start time
+  
+
+
 
   if(argc <= 2) {
       printf("No Arguments");
@@ -283,10 +289,7 @@ int main(int argc, char **argv)
 
   printf("Running Size %d on %d\n", size, numberOfNodes);
 
-  int rank;
-  int rc = MPI_Init(NULL, NULL);
-  //Record start time
-  starttime = MPI_Wtime();
+
   //Check for error
   if (rc != MPI_SUCCESS) {
     printf ("Error\n");
@@ -303,7 +306,9 @@ int main(int argc, char **argv)
   {
     offset = offset + chunkSize[i];
   }
-  //Which every process hasen't finished
+  endtime   = MPI_Wtime();
+  printf("That took %f\n",endtime - starttime);
+  //While every process hasen't finished
   int cont = 1;
   while (cont)
   {

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.2)  11 DEC 2016 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.2)  12 DEC 2016 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -581,7 +581,7 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
  (./report.aux
 
-LaTeX Warning: Label `fig:speedup' multiply defined.
+LaTeX Warning: Label `fig:slowdown' multiply defined.
 
 )
 \openout1 = `report.aux'.
@@ -668,46 +668,55 @@ your preamble.
 
 \c@lstlisting=\count146
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--42
+Underfull \hbox (badness 10000) in paragraph at lines 22--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--42
+Underfull \hbox (badness 10000) in paragraph at lines 22--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--42
+Underfull \hbox (badness 10000) in paragraph at lines 22--41
 
  []
 
-PGFPlots: reading {data/TimeThreads1000}
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-PGFPlots: reading {data/TimeThread10000}
- [2] (./report.aux)
+PGFPlots: reading {data/speedup}
+PGFPlots: reading {data/speedup}
+ [2]
+PGFPlots: reading {data/TimeThreads1000}
+ [3]
+PGFPlots: reading {data/gustafsons8}
+PGFPlots: reading {data/gustafsons64}
+ [4]
+(./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23610 strings out of 494942
- 603588 string characters out of 6180501
- 747568 words of memory out of 5000000
- 26507 multiletter control sequences out of 15000+600000
- 8408 words of font info for 31 fonts, out of 8000000 for 9000
+ 23700 strings out of 494942
+ 607110 string characters out of 6180501
+ 750410 words of memory out of 5000000
+ 26595 multiletter control sequences out of 15000+600000
+ 8715 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,11n,103p,724b,1872s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,103p,724b,1860s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on report.pdf (2 pages, 56951 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (4 pages, 87456 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 48 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

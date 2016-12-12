@@ -45,32 +45,114 @@ so the node won't wait for the other node to receive the value before continuing
 
 \section{Scalability Investigation}
 
+\subsection{Speedup}
+
+The speedup was calculated using a 10,000 by 10,000 matrix using a selection of
+nodes between 1 and 64. The results are given in the table below.
+
+\begin{center}
+\pgfplotstabletypeset[
+  columns/nodes/.style={column name=processors},
+  columns/time/.style={column name=Time (S)},
+  columns/speedup/.style={column name=Speedup on P processors},
+]{data/speedup}
+\end{center}
+
+As the results show the speedup on P processors is very close to the number of processors
+used. This is true until over 16 processors, at this point the extra communication
+overhead added by using another processor starts to outweigh the extra processing
+power gained. Figure 1 shows this in graph form.
+
 \begin{figure}[H]
  \centering
  \begin{tikzpicture}
  \begin{axis}[
-     xlabel={Nodes},
-     ylabel=Time,
+     xlabel={Processors},
+     ylabel=Speedup,
+     ]
+   \addplot table [x=nodes,y=speedup] {data/speedup};
+ \end{axis}
+ \end{tikzpicture}
+ \caption{Speedup}
+ \label{fig:speedup}
+ \end{figure}
+
+\subsection{Amdahls Limit}
+
+Amdahls Limit is the maximum limit speedup can reach, this is because a certain ammount
+of the computation must be done in serial and therefor adding more processors will not
+reduce the time this takes.\\
+The only parts of the system that have to run in parallel is the checking if all the
+nodes have finished and the rebuilding of the matrix at the end of the computation.
+However the creation of the matrix and the swapping of the read and write matrix
+happens on all processors so adding more will not decrease this time. Also something
+to note is as the number of processors increases the amount of time taken to check
+if each processor has done and rebuild the matrix will increase as there are more
+processors to communicate with.\\
+Due to the fact that the serial parts of the problem increase as the number of processors
+are added the theoretical amdahl limit was not calculated.
+
+\subsection{Slowdown}
+
+When smalled matrix's were used it was noticed that as more threads were added the
+time time taken to complete would increase. This is due to the overhead of communicating
+between processors is more than the time saved by splitting the problem up further.
+Slowdown can be observed when a 1000 by 1000 matrix is used, results are show in Figure 2
+below.
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Processors},
+     ylabel=Speedup,
      ]
    \addplot table [x=nodes,y=time] {data/TimeThreads1000};
  \end{axis}
  \end{tikzpicture}
- \caption{}
- \label{fig:speedup}
+ \caption{Slowdown}
+ \label{fig:slowdown}
+ \end{figure}
+
+As Figure 2 shows when more that around 16 processors were used the amount of time
+required to complete the computation increased.
+
+\subsection{Gustafson's Law}
+
+Gustafson's Law states that if you increase the size of the problem then the amount of
+time spent on any sequential parts will be a less significant chunk of overall runtime.
+This means better speedup values can be obtained. To show this the speedup values were
+calculated for differing sizes of matrices to show as the size increase so does
+speedup.
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Matrix Size},
+     ylabel=Speedup,
+     ]
+   \addplot table [x=size,y=speedup] {data/gustafsons8};
+ \end{axis}
+ \end{tikzpicture}
+ \caption{Gustafson's Law 8 Processors}
+ \label{fig:slowdown}
  \end{figure}
 
  \begin{figure}[H]
   \centering
   \begin{tikzpicture}
   \begin{axis}[
-      xlabel={Nodes},
-      ylabel=Time,
+      xlabel={Matrix Size},
+      ylabel=Speedup,
       ]
-    \addplot table [x=nodes,y=time] {data/TimeThread10000};
+      \addplot table [x=size,y=speedup] {data/gustafsons64};
   \end{axis}
   \end{tikzpicture}
-  \caption{}
-  \label{fig:speedup}
+  \caption{Gustafson's Law 64 Processors}
+  \label{fig:slowdown}
   \end{figure}
+
+  As you can
 
 \end{document}
