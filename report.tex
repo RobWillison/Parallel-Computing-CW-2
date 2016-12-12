@@ -105,7 +105,7 @@ below.
  \begin{tikzpicture}
  \begin{axis}[
      xlabel={Processors},
-     ylabel=Speedup,
+     ylabel=Time (S),
      ]
    \addplot table [x=nodes,y=time] {data/TimeThreads1000};
  \end{axis}
@@ -153,6 +153,36 @@ speedup.
   \label{fig:slowdown}
   \end{figure}
 
-  As you can
+  As you can see from Figure 3 and 4 as Gustafson's Law suggests as the size of
+  the problem is increased the speed up on P processors also increases, until the
+  speedup reaches the number of processors used.
+
+  \subsection{Efficiency}
+
+The efficiency was calculated for a number of processors and problem sizes, the results
+are shown in Figure 5.
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Processors},
+     ylabel=Efficiency,
+     ]
+     \addplot table [x=processor,y=efficiency] {data/efficiency1000};
+     \addplot table [x=processor,y=efficiency] {data/efficiency10000};
+     \addlegendentry{1000 x 1000 matrix}
+     \addlegendentry{10000 x 10000 matrix}
+ \end{axis}
+ \end{tikzpicture}
+ \caption{Efficiency}
+ \label{fig:slowdown}
+ \end{figure}
+
+As expected from the results of the speedup investigation earlier the efficiency drops
+as more processors are added and the problem size is kept constant. This is because
+as some of the program has to be done in serial for that part every other processor
+is idle, therefore if more processors are added the total idle time increases.
+
 
 \end{document}
