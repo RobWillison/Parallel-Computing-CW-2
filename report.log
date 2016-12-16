@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.2)  12 DEC 2016 18:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.2)  16 DEC 2016 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report
+**report.tex
 (./report.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 4 language(s) loaded.
@@ -688,32 +688,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--41
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--53
+
+ []
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 90.
+
+
+Overfull \hbox (52.77863pt too wide) in paragraph at lines 92--104
+[][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 106.
+
+
+Overfull \hbox (52.77863pt too wide) in paragraph at lines 109--121
+ [][] 
+ []
+
 PGFPlots: reading {data/speedup}
+[3]
 PGFPlots: reading {data/speedup}
- [2]
 PGFPlots: reading {data/TimeThreads1000}
- [3]
+ [4]
 PGFPlots: reading {data/gustafsons8}
+ [5]
 PGFPlots: reading {data/gustafsons64}
 PGFPlots: reading {data/efficiency1000}
 PGFPlots: reading {data/efficiency10000}
- [4] [5]
-(./report.aux)
+ [6]
+PGFPlots: reading {data/karpflatt1000}
+PGFPlots: reading {data/karpflatt5000}
+PGFPlots: reading {data/karpflatt10000}
+ [7] [8] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23731 strings out of 494942
- 607787 string characters out of 6180501
- 761098 words of memory out of 5000000
- 26624 multiletter control sequences out of 15000+600000
+ 23764 strings out of 494942
+ 608580 string characters out of 6180501
+ 764049 words of memory out of 5000000
+ 26654 multiletter control sequences out of 15000+600000
  8715 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,19n,103p,724b,2183s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,19n,103p,728b,2217s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
@@ -721,10 +748,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (5 pages, 91625 bytes).
+Output written on report.pdf (8 pages, 98572 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

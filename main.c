@@ -41,7 +41,7 @@ void printArray(double **matrix)
   int y;
   for (x = 0; x < size; x++) {
     for (y = 0; y < size; y++) {
-      printf("%f ", matrix[x][y]);
+      printf("%.3f ", matrix[x][y]);
     }
     printf("\n");
   }
@@ -195,7 +195,6 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
   //If this isnt the first chunk recieve the rightmost row from the node to the left
   if (offset > 1)
   {
-    MPI_Status stat;
     int target = rank - 1;
     MPI_Irecv(
       writeMatrix[offset - 1],
@@ -210,7 +209,6 @@ int relaxChunk(double** readMatrix, double** writeMatrix, int chunkSize, int off
   //If this isnt the last chunk recieve the leftmost row from the node to the right
   if (offset + (chunkSize - 1) < size - 2)
   {
-    MPI_Status stat;
     int target = rank + 1;
     MPI_Irecv(
       writeMatrix[offset + (chunkSize - 1) + 1],
@@ -271,7 +269,7 @@ int main(int argc, char **argv)
   int rank;
   int rc = MPI_Init(NULL, NULL);
   //Record start time
-  
+  starttime   = MPI_Wtime();
 
 
 
@@ -306,8 +304,7 @@ int main(int argc, char **argv)
   {
     offset = offset + chunkSize[i];
   }
-  endtime   = MPI_Wtime();
-  printf("That took %f\n",endtime - starttime);
+
   //While every process hasen't finished
   int cont = 1;
   while (cont)
@@ -356,7 +353,6 @@ int main(int argc, char **argv)
       writeArrayIntoMatrix(array, writeMatrix, offset, chunkSize[i], size);
       offset = offset + chunkSize[i];
     }
-    printArray(writeMatrix);
   } else {
     //If this node hasen't got a rank of 0 send its chunk to the node of rank 0
     double* array = flatternMatrixChunk(writeMatrix, size, offset, chunkSize[rank]);
@@ -367,6 +363,10 @@ int main(int argc, char **argv)
   //Get the run time
   endtime   = MPI_Wtime();
   printf("That took %f\n",endtime - starttime);
+
+  if (rank == 0){
+    printArray(writeMatrix);
+  }
 
   return 0;
 }

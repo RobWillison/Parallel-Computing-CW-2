@@ -41,7 +41,87 @@ so the node won't wait for the other node to receive the value before continuing
 
 \section{Testing}
 
+To correctness test the program it was split into three separate chunks which would
+be tested spectrally. The first is the ability to perform one iteration correctly and
+replace all cells with the average of their four neighbors. The second is that
+the iterations will stop after the precision is reached, and finally that when more
+than one processor is used the output is the same.\\~\\
+To test the first case the program was run on a 5x5 matrix, surrounded by 10's, for one iteration and the
+answer captured. If the program works correctly the output should consist of 5
+in each of the corners and 2.5 around the edge. As shown by the output below this is
+working correctly.
 
+\begin{center}
+\begin{tabular}{ c c c c c }
+ 10 & 10 & 10 & 10 & 10 \\
+ 10 & 5.0 & 2.5 & 5.0 & 10 \\
+ 10 & 2.5 & 0.0 & 2.5 & 10 \\
+ 10 & 5.0 & 2.5 & 5.0 & 10 \\
+ 10 & 10 & 10 & 10 & 10 \\
+\end{tabular}
+\end{center}
+
+The next step is too check that the iterations stop when the precision is met.
+In order to test this the same 5x5 matrix was used. The precision was first set to
+5 this should yield one iteration as the precision is met immediately, the precision was
+then halved to 2.5 which should yield 2 iterations. As shown by the result table below
+this worked as expected.
+
+\begin{center}
+\begin{tabular}{ c c c c }
+iteration & diffrence & precision & continue \\
+ 1 & 5 & 5 & 0\\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+iteration & diffrence & precision & continue \\
+ 1 & 5 & 2.5 & 1\\
+ 2 & 2.5 & 2.5 & 0\\
+\end{tabular}
+\end{center}
+
+Finally to test that these conditions still hold when multiple threads are used
+a 10x10 matrix was run using 1, 2 and 4 processors and each where checked to make
+sure they were identical. below are the outputs from the runs with 1 and 4 processors.
+\newpage
+
+\begin{table}[]
+\caption{1 Processor}
+\begin{tabular}{llllllllll}
+10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 \\
+10.000 & 9.981  & 9.965  & 9.953  & 9.946  & 9.946  & 9.953  & 9.965  & 9.981  & 10.000 \\
+10.000 & 9.965  & 9.934  & 9.911  & 9.899  & 9.899  & 9.911  & 9.934  & 9.965  & 10.000 \\
+10.000 & 9.953  & 9.911  & 9.881  & 9.864  & 9.864  & 9.881  & 9.911  & 9.953  & 10.000 \\
+10.000 & 9.946  & 9.899  & 9.864  & 9.846  & 9.846  & 9.864  & 9.899  & 9.946  & 10.000 \\
+10.000 & 9.946  & 9.899  & 9.864  & 9.846  & 9.846  & 9.864  & 9.899  & 9.946  & 10.000 \\
+10.000 & 9.953  & 9.911  & 9.881  & 9.864  & 9.864  & 9.881  & 9.911  & 9.953  & 10.000 \\
+10.000 & 9.965  & 9.934  & 9.911  & 9.899  & 9.899  & 9.911  & 9.934  & 9.965  & 10.000 \\
+10.000 & 9.981  & 9.965  & 9.953  & 9.946  & 9.946  & 9.953  & 9.965  & 9.981  & 10.000 \\
+10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 \\
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{4 Processors}
+\begin{tabular}{llllllllll}
+10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 \\
+10.000 & 9.981  & 9.965  & 9.953  & 9.946  & 9.946  & 9.953  & 9.965  & 9.981  & 10.000 \\
+10.000 & 9.965  & 9.934  & 9.911  & 9.899  & 9.899  & 9.911  & 9.934  & 9.965  & 10.000 \\
+10.000 & 9.953  & 9.911  & 9.881  & 9.864  & 9.864  & 9.881  & 9.911  & 9.953  & 10.000 \\
+10.000 & 9.946  & 9.899  & 9.864  & 9.846  & 9.846  & 9.864  & 9.899  & 9.946  & 10.000 \\
+10.000 & 9.946  & 9.899  & 9.864  & 9.846  & 9.846  & 9.864  & 9.899  & 9.946  & 10.000 \\
+10.000 & 9.953  & 9.911  & 9.881  & 9.864  & 9.864  & 9.881  & 9.911  & 9.953  & 10.000 \\
+10.000 & 9.965  & 9.934  & 9.911  & 9.899  & 9.899  & 9.911  & 9.934  & 9.965  & 10.000 \\
+10.000 & 9.981  & 9.965  & 9.953  & 9.946  & 9.946  & 9.953  & 9.965  & 9.981  & 10.000 \\
+10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000 & 10.000
+\end{tabular}
+\end{table}
+
+Given these results it is concluded that the program correctly calculates the relaxation
+of a matrix with any number of processors.
 
 \section{Scalability Investigation}
 
@@ -182,7 +262,39 @@ are shown in Figure 5.
 As expected from the results of the speedup investigation earlier the efficiency drops
 as more processors are added and the problem size is kept constant. This is because
 as some of the program has to be done in serial for that part every other processor
-is idle, therefore if more processors are added the total idle time increases.
+is idle, therefore if more processors are added the cumulative time a processor is ideal increases.
+
+\subsection{Karp-Flatt}
+
+The Karp-Flatt metric is a measure for the sequential part of the program, the larger
+the Karp-Flatt metric the larger the sequential part of the problem. The metric was
+calculated for three different matrix sizes on different numbers of processors, it
+is expected that as more processors are added the Karp-Flatt will increase due to
+the longer time spent on communication.
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Processors},
+     ylabel=KarpFlatt,
+     ]
+   \addplot table [x=processors,y=karpflatt] {data/karpflatt1000};
+   \addplot table [x=processors,y=karpflatt] {data/karpflatt5000};
+   \addplot table [x=processors,y=karpflatt] {data/karpflatt10000};
+   \addlegendentry{1000 x 1000}
+   \addlegendentry{5000 x 000}
+   \addlegendentry{10000 x 10000}
+ \end{axis}
+ \end{tikzpicture}
+ \caption{0.01 precision}
+ \label{fig:karpflatt}
+\end{figure}
+
+As the graph shows what we expected is true, as the number of processors is increased
+the Karp-Flatt metric also increases. The increase on smaller problem sizes is much
+larger than those on larger problems. This is because the proportion of the time
+spent doing sequential tasks is much larger on smaller problem sizes.
 
 
 \end{document}
