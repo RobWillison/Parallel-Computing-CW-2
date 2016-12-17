@@ -270,7 +270,7 @@ The Karp-Flatt metric is a measure for the sequential part of the program, the l
 the Karp-Flatt metric the larger the sequential part of the problem. The metric was
 calculated for three different matrix sizes on different numbers of processors, it
 is expected that as more processors are added the Karp-Flatt will increase due to
-the longer time spent on communication.
+the longer time spent on communication. The results are shown in Figure 6.
 
 \begin{figure}[H]
  \centering
@@ -295,6 +295,92 @@ As the graph shows what we expected is true, as the number of processors is incr
 the Karp-Flatt metric also increases. The increase on smaller problem sizes is much
 larger than those on larger problems. This is because the proportion of the time
 spent doing sequential tasks is much larger on smaller problem sizes.
+
+\subsection{Parallel Overhead}
+
+The overhead was calculated to evaluate the work efficiency of the parallel program.
+The equation below was used to calculate the overhead.
+
+\begin{center}
+$Overhead\ =\ p\ \times\ time\ on\ P\ processors\ -\ time\ on\ 1\ processor}$
+\end{center}
+
+This gives the total parallel overhead for a given number of processors in seconds.
+This total efficiency was divided by the number of processors to give the overhead
+per thread in seconds. The results from this are shown in Figure 7.
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Processors},
+     ylabel=Overhead per Processor (S),
+     ]
+   \addplot table [x=processors,y=overhead] {data/overhead1000};
+   \addplot table [x=processors,y=overhead] {data/overhead5000};
+   \addplot table [x=processors,y=overhead] {data/overhead10000};
+   \addlegendentry{1000 x 1000}
+   \addlegendentry{5000 x 000}
+   \addlegendentry{10000 x 10000}
+ \end{axis}
+ \end{tikzpicture}
+ \caption{0.01 precision}
+ \label{fig:overhead}
+\end{figure}
+
+As shown in figure 7 as more processors are added the parallel overhead per thread
+increases. This is expected as when more processors are added there is more communication
+needed. Also as the problem size is increased the overhead also increases this is due
+to the fact there is more data to transfer between processors thus communication times increased.
+
+\subsection{Isoefficiency}
+
+The isoefficiency was calculated in order to work out how well the program scales.
+The isoefficiency tells you how much the problem size has to increased by in order
+to  keep the efficiency constant. In order to work out the isoefficiency an efficiency
+of 0.8 was chosen and the number of cores needed to reach this efficiency
+for different problem sizes was found. These results are shown in the table below.
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+ \hline
+  Problem size & 0.8 efficiency\\
+  1000 & 8\\
+  3000 & 16\\
+  5000 & 21\\
+  7000 & 26\\
+  9000 & 30\\
+ \hline
+\end{tabular}
+\end{center}
+
+The results in the table are shown in graphical form in Figure 8.
+
+\begin{figure}[H]
+ \centering
+ \begin{tikzpicture}
+ \begin{axis}[
+     xlabel={Matrix Size},
+     ylabel=Processors,
+     ]
+   \addplot table [x=size,y=eight] {data/isoefficiency};
+   \addlegendentry{0.8 efficiency}
+ \end{axis}
+ \end{tikzpicture}
+ \caption{}
+ \label{fig:Isoefficiency}
+\end{figure}
+
+A line of best fit can be drawn through those points with an equation of
+$y=0.0027x+6.7$. This shows that to maintain a given efficiency the matrix
+size must be increased by approximately 350 in each direction when another processor is added.
+
+\subsection{Conclusion}
+
+In conclusion the scalability is very good for the implementation given. The main
+reason for this is that the isoefficiency has a linear relationship and that if a
+new processor is added the matrix size only needs to be increased by 350 in both
+directions to maintain efficiency.
 
 
 \end{document}

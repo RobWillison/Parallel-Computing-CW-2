@@ -1,10 +1,10 @@
 processors = [1, 2, 4, 8, 16, 32, 48, 64]
 
-fout = open('karpflatt5000','w')
+fout = open('efficiency9000','w')
 
 first = True
 
-with open("TimeThread5000", "r") as my_file:
+with open("TimeThread9000", "r") as my_file:
     for lines in my_file:
         lines = lines.replace("\n", '');
         numbers = lines.split(' ')
@@ -19,10 +19,9 @@ with open("TimeThread5000", "r") as my_file:
 
         p = float(numbers[0])
 
-        top = (1/(core1/float(numbers[1])) - (1/p))
-        bottom = 1 - (1/p)
+        result = core1 / (p * float(numbers[1]))
 
-        fout.write(str(int(p)) + ' ' + str((top/bottom)) + '\n')
+        fout.write(str(int(p)) + ' ' + str(result) + '\n')
 
         print(p)
 
